@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+
+  postgresql:
+    container_name: "postgresql_container"
+    image: postgres:9.6
+    ports:
+      - "5555:5432"
+    environment:
+       POSTGRES_USER : "michail"
+       POSTGRES_PASSWORD : "1234"
+       POSTGRES_DB : "test"
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+    restart: always
+
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - "8379:6379"
+    restart: always
+
+  wkhtmltopdf:
+    container_name: wkhtmltopdf
+    image: openlabs/docker-wkhtmltopdf-aas
+    ports:
+      - "8080:80"
+    restart: always
+
+volumes:
+  postgres_volume:

@@ -1,0 +1,5 @@
+Django==1.11
+psycopg2>=2.7,<3.0
+django-rq
+requests
+jsonschema
